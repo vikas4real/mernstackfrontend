@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { signout, isAuthenticated } from "../auth/helper";
 
 const currentMenu = (history, path) => {
    if (history.location.pathname === path) {
@@ -54,13 +55,35 @@ const Menu = ({ history }) => (
          </li>
          <li className="nav-item">
             <Link
-               style={currentMenu(history, "/login")}
+               style={currentMenu(history, "/accessories")}
                className="nav-link"
-               to="/account"
+               to="/accessories"
             >
-               Account
+               Accessories
             </Link>
          </li>
+         {isAuthenticated() && isAuthenticated().user.role === 1 && (
+            <li className="nav-item">
+               <Link
+                  style={currentMenu(history, "/admin/dashboard")}
+                  className="nav-link"
+                  to="/admin/dashboard"
+               >
+                  Admin Dashboard
+               </Link>
+            </li>
+         )}
+         {isAuthenticated() && isAuthenticated().user.role === 0 && (
+            <li className="nav-item">
+               <Link
+                  style={currentMenu(history, "/user/dashboard")}
+                  className="nav-link"
+                  to="/user/dashboard"
+               >
+                  User Dashboard
+               </Link>
+            </li>
+         )}
          <li className="nav-item">
             <Link
                style={currentMenu(history, "/cart")}
@@ -70,24 +93,43 @@ const Menu = ({ history }) => (
                Cart
             </Link>
          </li>
-         <li className="nav-item">
-            <Link
-               style={currentMenu(history, "/signup")}
-               className="nav-link"
-               to="/signup"
-            >
-               SignUP
-            </Link>
-         </li>
-         <li className="nav-item">
-            <Link
-               style={currentMenu(history, "/signin")}
-               className="nav-link"
-               to="/signin"
-            >
-               SignIn
-            </Link>
-         </li>
+         !
+         {!isAuthenticated() && (
+            <Fragment>
+               <li className="nav-item">
+                  <Link
+                     style={currentMenu(history, "/signup")}
+                     className="nav-link"
+                     to="/signup"
+                  >
+                     SignUp
+                  </Link>
+               </li>
+               <li className="nav-item">
+                  <Link
+                     style={currentMenu(history, "/signin")}
+                     className="nav-link"
+                     to="/signin"
+                  >
+                     SignIn
+                  </Link>
+               </li>
+            </Fragment>
+         )}
+         {isAuthenticated() && (
+            <li className="nav-item">
+               <span
+                  className="nav-link text-warning"
+                  onClick={() => {
+                     signout(() => {
+                        history.push("/");
+                     });
+                  }}
+               >
+                  Sign Out
+               </span>
+            </li>
+         )}
       </ul>
    </div>
 );

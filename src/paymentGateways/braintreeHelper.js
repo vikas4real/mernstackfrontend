@@ -1,8 +1,7 @@
-import { API } from "../../backend";
+import { API } from "../backend";
 
-//<---------- Get All Orders ------------->
-export const getAllUserOrders = (userId, token) => {
-   return fetch(`${API}/${userId}/orders`, {
+export const getTheToken = (userId, token) => {
+   return fetch(`${API}/payment/gettoken/${userId}`, {
       method: "GET",
       headers: {
          Accept: "application/json",
@@ -17,16 +16,15 @@ export const getAllUserOrders = (userId, token) => {
          console.log(err);
       });
 };
-
-//<----- Update Profile Helper -------->
-export const updateProfile = (userId, token) => {
-   return fetch(`${API}/user/update/${userId}`, {
-      method: "PUT",
+export const processThePayment = (userId, token, paymentInfo) => {
+   return fetch(`${API}/payment/braintree/${userId}`, {
+      method: "POST",
       headers: {
          Accept: "application/json",
          "Content-Type": "application/json",
          Authorization: `Bearer ${token}`,
       },
+      body: JSON.stringify(paymentInfo),
    })
       .then((response) => {
          return response.json();

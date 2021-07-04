@@ -1,16 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { isAuthenticated } from "../auth/helper";
+import { isAuthenticated } from "../auth/helper/index";
 import Base from "../core/Base";
 import "../form-style.css";
-import { addCategory } from "./helper/adminapicall";
+import { updateCategory, getCategoryById } from "./helper/adminapicall";
 
-const AddCategory = () => {
+const UpdateCategory = ({ match }) => {
    const [name, setName] = useState("");
    const [error, setError] = useState(false);
    const [success, setSuccess] = useState(false);
 
    const { user, token } = isAuthenticated();
+
+   const preload = () => {
+      getCategoryById(match.params.categoryId).then((data) => {
+         if (data.error) {
+            setName("");
+         } else {
+            setName(data.name);
+         }
+      });
+   };
+   useEffect(() => {
+      preload();
+   }, []);
 
    const handleChange = (event) => {
       setError("");
@@ -21,17 +34,18 @@ const AddCategory = () => {
       event.preventDefault();
       setError("");
       setSuccess(false);
-
       //backend request fired
-      addCategory(user._id, token, { name }).then((data) => {
-         if (data.error) {
-            setError(true);
-         } else {
-            setError("");
-            setSuccess(true);
-            setName("");
+      updateCategory(match.params.categoryId, user._id, token, { name }).then(
+         (data) => {
+            if (data.error) {
+               setError(true);
+            } else {
+               setError("");
+               setSuccess(true);
+               setName("");
+            }
          }
-      });
+      );
    };
 
    const successMsg = () => {
@@ -41,7 +55,7 @@ const AddCategory = () => {
                className="alert alert-success"
                style={{ display: success ? "" : "none" }}
             >
-               Category Added Successfully
+               Category Updated Successfully
             </div>
          );
       }
@@ -53,15 +67,15 @@ const AddCategory = () => {
                className="alert alert-danger"
                style={{ display: error ? "" : "none" }}
             >
-               Failed to create Category
+               Failed to update Category
             </div>
          );
       }
    };
 
-   const AddCategoryForm = () => (
+   const UpdateCategoryForm = () => (
       <form className="box">
-         <h1>Create Category</h1>
+         <h1>Update Category</h1>
          <input
             onChange={handleChange}
             required
@@ -70,7 +84,7 @@ const AddCategory = () => {
             placeholder="Enter Category Name"
          />
          <button type="submit" onClick={(event) => onSubmit(event)}>
-            Add Category
+            Update Category
          </button>
          <Link to="/admin/dashboard">
             <button type="submit">Go Back</button>
@@ -81,10 +95,10 @@ const AddCategory = () => {
    return (
       <div>
          <Base></Base>
-         {AddCategoryForm()}
+         {UpdateCategoryForm()}
          {successMsg()}
          {errorMsg()}
       </div>
    );
 };
-export default AddCategory;
+export default UpdateCategory;
