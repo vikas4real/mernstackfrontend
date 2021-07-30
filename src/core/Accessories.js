@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles.css";
 import Base from "./Base";
 import Card from "./Card";
+import Footer from "./Footer";
 import { getProductsAccessories } from "./helper/coreapicalls";
 const Accessories = () => {
    const [products, setProducts] = useState([]);
@@ -35,6 +36,7 @@ const Accessories = () => {
                })}
             </div>
          </div>
+         <Footer />
       </div>
    );
 };

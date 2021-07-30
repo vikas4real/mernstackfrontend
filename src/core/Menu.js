@@ -1,72 +1,55 @@
 import React, { Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticated } from "../auth/helper";
+import "../styles.css";
 
 const currentMenu = (history, path) => {
    if (history.location.pathname === path) {
-      return { color: "#FFFFFF" };
+      return { color: "#FFFFFF", textDecoration: "none" };
    } else {
-      return { color: "#D1D1D1" };
+      return { color: "#D1D1D1", textDecoration: "none" };
    }
 };
 const Menu = ({ history }) => (
-   <div>
-      <ul className="nav nav-tabs bg-dark">
-         <li className="nav-item">
-            <Link style={currentMenu(history, "/")} className="nav-link" to="/">
-               Home
+   <nav>
+      <ul>
+         <li>
+            <Link style={currentMenu(history, "/")} to="/">
+               <i className="fab fa-apple"></i>
             </Link>
          </li>
-         <li className="nav-item">
-            <Link
-               style={currentMenu(history, "/mac")}
-               className="nav-link"
-               to="/mac"
-            >
+         <li>
+            <Link style={currentMenu(history, "/mac")} to="/mac">
                Mac
             </Link>
          </li>
-         <li className="nav-item">
-            <Link
-               style={currentMenu(history, "/ipad")}
-               className="nav-link"
-               to="/ipad"
-            >
+         <li>
+            <Link style={currentMenu(history, "/ipad")} to="/ipad">
                iPad
             </Link>
          </li>
-         <li className="nav-item">
-            <Link
-               style={currentMenu(history, "/iphone")}
-               className="nav-link"
-               to="/iphone"
-            >
+         <li>
+            <Link style={currentMenu(history, "/iphone")} to="/iphone">
                iPhone
             </Link>
          </li>
-         <li className="nav-item">
-            <Link
-               style={currentMenu(history, "/watch")}
-               className="nav-link"
-               to="/watch"
-            >
+         <li>
+            <Link style={currentMenu(history, "/watch")} to="/watch">
                Watch
             </Link>
          </li>
-         <li className="nav-item">
+         <li>
             <Link
                style={currentMenu(history, "/accessories")}
-               className="nav-link"
                to="/accessories"
             >
                Accessories
             </Link>
          </li>
          {isAuthenticated() && isAuthenticated().user.role === 1 && (
-            <li className="nav-item">
+            <li>
                <Link
                   style={currentMenu(history, "/admin/dashboard")}
-                  className="nav-link"
                   to="/admin/dashboard"
                >
                   Admin Dashboard
@@ -74,52 +57,38 @@ const Menu = ({ history }) => (
             </li>
          )}
          {isAuthenticated() && isAuthenticated().user.role === 0 && (
-            <li className="nav-item">
+            <li>
                <Link
                   style={currentMenu(history, "/user/dashboard")}
-                  className="nav-link"
                   to="/user/dashboard"
                >
                   User Dashboard
                </Link>
             </li>
          )}
-         <li className="nav-item">
-            <Link
-               style={currentMenu(history, "/cart")}
-               className="nav-link"
-               to="/cart"
-            >
-               Cart
+         <li>
+            <Link style={currentMenu(history, "/cart")} to="/cart">
+               <i class="fas fa-shopping-bag"></i>
             </Link>
          </li>
-         !
          {!isAuthenticated() && (
             <Fragment>
-               <li className="nav-item">
-                  <Link
-                     style={currentMenu(history, "/signup")}
-                     className="nav-link"
-                     to="/signup"
-                  >
+               <li>
+                  <Link style={currentMenu(history, "/signup")} to="/signup">
                      SignUp
                   </Link>
                </li>
-               <li className="nav-item">
-                  <Link
-                     style={currentMenu(history, "/signin")}
-                     className="nav-link"
-                     to="/signin"
-                  >
+               <li>
+                  <Link style={currentMenu(history, "/signin")} to="/signin">
                      SignIn
                   </Link>
                </li>
             </Fragment>
          )}
          {isAuthenticated() && (
-            <li className="nav-item">
+            <li>
                <span
-                  className="nav-link text-warning"
+                  style={{ color: "red" }}
                   onClick={() => {
                      signout(() => {
                         history.push("/");
@@ -131,7 +100,7 @@ const Menu = ({ history }) => (
             </li>
          )}
       </ul>
-   </div>
+   </nav>
 );
 
 export default withRouter(Menu);

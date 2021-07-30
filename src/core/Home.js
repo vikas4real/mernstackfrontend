@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles.css";
 import Base from "./Base";
 import Card from "./Card";
+import Footer from "./Footer";
 import { getProducts } from "./helper/coreapicalls";
 const Home = () => {
    const [products, setProducts] = useState([]);
@@ -52,6 +53,11 @@ const Home = () => {
    return (
       <div>
          <Base />
+         <section className="welcome">
+            <h1>iPhone 12</h1>
+            <h3>Blast past fast.</h3>
+            <h4>Starts from ₹69900. </h4>
+         </section>
          <div className="row left">
             <h1>iPhone</h1>
             {iphone.map((product, index) => {
@@ -91,19 +97,9 @@ const Home = () => {
                );
             })}
          </div>
+         <Footer />
       </div>
    );
 };
 
 export default Home;
-
-/* {products.map((product, index) => {
-               return (
-                  <div
-                     key={index}
-                     className="container mt-5 mb-5 col-lg-3 col-md-4 col-sm-12"
-                  >
-                     <Card product={product} />
-                  </div>
-               );
-            })} */

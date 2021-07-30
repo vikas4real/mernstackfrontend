@@ -164,7 +164,10 @@ const AddProduct = () => {
             Add Product
          </button>
          <Link to="/admin/dashboard">
-            <button type="submit">Go Back</button>
+            <button style={{ textDecoration: "none" }} type="submit">
+               Go Back
+            </button>
+            ``
          </Link>
       </form>
    );
