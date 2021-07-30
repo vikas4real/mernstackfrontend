@@ -92,5 +92,3 @@ const Routes = () => {
    );
 };
 export default Routes;
-
-//  <PrivateRoute path="/:userId/orders" exact component={Orders} />
