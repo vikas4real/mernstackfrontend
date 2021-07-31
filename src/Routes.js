@@ -25,8 +25,11 @@ import ManageOrders from "./admin/ManageOrders";
 import Cart from "./core/Cart";
 import { createOrder } from "./core/helper/orderHelper";
 import Orders from "./user/Orders";
+
 import AdminDashboard from "./user/AdminDashboard";
-import UserDashboard from "./user/UserDashboard";
+// import UserDashboard from "./user/UserDashboard";
+
+import UserDashboard from "src/user/UserDashboard";
 
 const Routes = () => {
    return (
