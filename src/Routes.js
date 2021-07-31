@@ -6,14 +6,15 @@ import IPhone from "./core/IPhone";
 import IPad from "./core/IPad";
 import Watch from "./core/Watch";
 import Accessories from "./core/Accessories";
-
 import Signup from "./user/Signup";
 import Signin from "./user/Signin";
 import AdminRoute from "./auth/helper/AdminRoutes";
 import PrivateRoute from "./auth/helper/PrivateRoutes";
 
+import UserDashboard from "src/user/UserDashboard";
 import Profile from "./user/Profile";
 
+import AdminDashboard from "src/user/AdminDashboard";
 import AddCategory from "./admin/AddCategory";
 import ManageCategories from "./admin/ManageCategories";
 import UpdateCategory from "./admin/UpdateCategory";
@@ -21,15 +22,9 @@ import AddProduct from "./admin/AddProduct";
 import ManageProducts from "./admin/ManageProducts";
 import UpdateProduct from "./admin/UpdateProduct";
 import ManageOrders from "./admin/ManageOrders";
-
 import Cart from "./core/Cart";
 import { createOrder } from "./core/helper/orderHelper";
 import Orders from "./user/Orders";
-
-import AdminDashboard from "src/user/AdminDashboard";
-// import UserDashboard from "./user/UserDashboard";
-
-import UserDashboard from "src/user/UserDashboard";
 
 const Routes = () => {
    return (
