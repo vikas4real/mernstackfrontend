@@ -12,10 +12,8 @@ import Signin from "./user/Signin";
 import AdminRoute from "./auth/helper/AdminRoutes";
 import PrivateRoute from "./auth/helper/PrivateRoutes";
 
-import UserDashboard from "../src/user/UserDashboard";
 import Profile from "./user/Profile";
 
-import AdminDashboard from "../src/user/AdminDashboard";
 import AddCategory from "./admin/AddCategory";
 import ManageCategories from "./admin/ManageCategories";
 import UpdateCategory from "./admin/UpdateCategory";
@@ -27,6 +25,8 @@ import ManageOrders from "./admin/ManageOrders";
 import Cart from "./core/Cart";
 import { createOrder } from "./core/helper/orderHelper";
 import Orders from "./user/Orders";
+import AdminDashboard from "./user/AdminDashboard";
+import UserDashboard from "./user/UserDashboard";
 
 const Routes = () => {
    return (
