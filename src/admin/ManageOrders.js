@@ -22,12 +22,12 @@ const ManageOrders = () => {
    }, []);
 
    return (
-      <div>
+      <div className="display-flex">
          <Base />
          <div className="row">
             <div className="col-12">
                <h2 className="text-center  my-3">All Orders</h2>
-               <table className="table">
+               <table className="table text-center">
                   <thead>
                      <tr>
                         <th scope="col">Order ID</th>
@@ -53,9 +53,17 @@ const ManageOrders = () => {
                                  {order.user.fname} {order.user.lname}
                               </td>
                               <td>{order.status}</td>
-                              {order.products.map((product, index) => {
-                                 return <td key={index}>{product.name}</td>;
-                              })}
+                              <td>
+                                 {order.products.map((product, index) => {
+                                    return (
+                                       <span key={index}>
+                                          <span>{index + 1}. </span>
+                                          {product.name}
+                                          <p></p>
+                                       </span>
+                                    );
+                                 })}
+                              </td>
                               <td>{order.txn_id}</td>
                               <td>₹ {order.total_amount}</td>
                               <td>{moment(order.updatedAt).format("L")}</td>

@@ -35,9 +35,7 @@ const UserDashboard = () => {
             <h4 className="card-header">User Information</h4>
             <ul className="list-group">
                <li className="list-group-item">
-                  <span>
-                     Name: {fname} {lname}
-                  </span>
+                  <span>Name: {fname + " " + lname}</span>
                </li>
                <li className="list-group-item">
                   <span>E-Mail: </span>

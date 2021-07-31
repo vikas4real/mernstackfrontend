@@ -6,8 +6,8 @@ import { signin, authenticate, isAuthenticated } from "../auth/helper";
 
 const Signin = () => {
    const [values, setValues] = useState({
-      email: "admin@apple.com",
-      password: "admin123",
+      email: "",
+      password: "",
       error: false,
       loading: false,
       didRedirect: "",
@@ -39,7 +39,7 @@ const Signin = () => {
          if (user && user.role === 1) {
             return <Redirect to="/admin/dashboard" />;
          } else {
-            return <Redirect to="/user/dashboard" />;
+            return <Redirect to="/" />;
          }
       }
       if (isAuthenticated()) {
@@ -51,7 +51,7 @@ const Signin = () => {
       return (
          loading && (
             <div className="alert alert-info">
-               <h2>Loading....</h2>
+               <h2>Signing in....</h2>
             </div>
          )
       );
