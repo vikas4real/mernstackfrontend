@@ -12,10 +12,10 @@ import Signin from "./user/Signin";
 import AdminRoute from "./auth/helper/AdminRoutes";
 import PrivateRoute from "./auth/helper/PrivateRoutes";
 
-import UserDashboard from "../src/user/UserDashboard";
+import UserDashboard from "src/user/UserDashboard";
 import Profile from "./user/Profile";
 
-import AdminDashboard from "../src/user/AdminDashboard";
+import AdminDashboard from "src/user/AdminDashboard";
 import AddCategory from "./admin/AddCategory";
 import ManageCategories from "./admin/ManageCategories";
 import UpdateCategory from "./admin/UpdateCategory";
