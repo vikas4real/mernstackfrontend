@@ -12,9 +12,15 @@ const currentMenu = (history, path) => {
 };
 const Menu = ({ history }) => (
    <nav className="navbar navbar-expand-lg navbar-dark">
-      <Link className="navbar-brand" style={currentMenu(history, "/")} to="/">
+      <Link
+         className="navbar-brand .d-none .d-sm-block .d-md-none"
+         style={currentMenu(history, "/")}
+         to="/"
+      >
+         {" "}
          <i className="fab fa-apple"></i>
       </Link>
+
       <button
          className="navbar-toggler"
          type="button"
@@ -31,6 +37,15 @@ const Menu = ({ history }) => (
             style={{ margin: "auto", listStyle: "none" }}
             className="navbar-nav"
          >
+            <li className="nav-item active">
+               <Link
+                  className="nav-link"
+                  style={currentMenu(history, "/")}
+                  to="/"
+               >
+                  <i className="fab fa-apple"></i>
+               </Link>
+            </li>
             <li className="nav-item active">
                <Link
                   className="nav-link"
