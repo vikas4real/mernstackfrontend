@@ -29,7 +29,10 @@ const IPad = () => {
             <div className="row">
                {products.map((product, index) => {
                   return (
-                     <div key={index} className="col-3 mb-4">
+                     <div
+                        key={index}
+                        className="container mt-5 mb-5 col-lg-3 col-md-4 col-sm-12"
+                     >
                         <Card product={product} />
                      </div>
                   );

@@ -11,95 +11,148 @@ const currentMenu = (history, path) => {
    }
 };
 const Menu = ({ history }) => (
-   <nav>
-      <ul>
-         <li>
-            <Link style={currentMenu(history, "/")} to="/">
-               <i className="fab fa-apple"></i>
-            </Link>
-         </li>
-         <li>
-            <Link style={currentMenu(history, "/mac")} to="/mac">
-               Mac
-            </Link>
-         </li>
-         <li>
-            <Link style={currentMenu(history, "/ipad")} to="/ipad">
-               iPad
-            </Link>
-         </li>
-         <li>
-            <Link style={currentMenu(history, "/iphone")} to="/iphone">
-               iPhone
-            </Link>
-         </li>
-         <li>
-            <Link style={currentMenu(history, "/watch")} to="/watch">
-               Watch
-            </Link>
-         </li>
-         <li>
+   <nav className="navbar navbar-expand-lg navbar-dark">
+      <Link className="navbar-brand" style={currentMenu(history, "/")} to="/">
+         <i className="fab fa-apple"></i>
+      </Link>
+      <button
+         className="navbar-toggler"
+         type="button"
+         data-toggle="collapse"
+         data-target="#navbarNavDropdown"
+         aria-controls="navbarNavDropdown"
+         aria-expanded="false"
+         aria-label="Toggle navigation"
+      >
+         <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarNavDropdown">
+         <ul
+            style={{ margin: "auto", listStyle: "none" }}
+            className="navbar-nav"
+         >
+            <li className="nav-item active">
+               <Link
+                  className="nav-link"
+                  style={currentMenu(history, "/mac")}
+                  to="/mac"
+               >
+                  Mac
+               </Link>
+            </li>
+            <li className="nav-item">
+               <Link
+                  className="nav-link"
+                  style={currentMenu(history, "/iphone")}
+                  to="/iphone"
+               >
+                  iPhone
+               </Link>
+            </li>
+            <li className="nav-item">
+               <Link
+                  className="nav-link"
+                  style={currentMenu(history, "/ipad")}
+                  to="/ipad"
+               >
+                  iPad
+               </Link>
+            </li>
+            <li className="nav-item">
+               <Link
+                  className="nav-link"
+                  style={currentMenu(history, "/watch")}
+                  to="/watch"
+               >
+                  Watch
+               </Link>
+            </li>
+            <li className="nav-item">
+               <Link
+                  className="nav-link"
+                  style={currentMenu(history, "/accessories")}
+                  to="/accessories"
+               >
+                  Accessories
+               </Link>
+            </li>
             <Link
-               style={currentMenu(history, "/accessories")}
-               to="/accessories"
+               className="nav-link"
+               style={currentMenu(history, "/cart")}
+               to="/cart"
             >
-               Accessories
+               <i className="fal fa-shopping-bag"></i>
             </Link>
-         </li>
-         {isAuthenticated() && isAuthenticated().user.role === 1 && (
-            <li>
+            <li className="nav-item dropdown">
                <Link
-                  style={currentMenu(history, "/admin/dashboard")}
-                  to="/admin/dashboard"
+                  style={currentMenu(history, "#")}
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                >
-                  Admin Dashboard
+                  Account
                </Link>
-            </li>
-         )}
-         {isAuthenticated() && isAuthenticated().user.role === 0 && (
-            <li>
-               <Link
-                  style={currentMenu(history, "/user/dashboard")}
-                  to="/user/dashboard"
+
+               <div
+                  className="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
                >
-                  User Dashboard
-               </Link>
+                  {isAuthenticated() && isAuthenticated().user.role === 1 && (
+                     <Link
+                        className="nav-link"
+                        style={currentMenu(history, "/admin/dashboard")}
+                        to="/admin/dashboard"
+                     >
+                        Admin Dashboard
+                     </Link>
+                  )}
+                  {isAuthenticated() && isAuthenticated().user.role === 0 && (
+                     <Link
+                        className="nav-link"
+                        style={currentMenu(history, "/user/dashboard")}
+                        to="/user/dashboard"
+                     >
+                        User Dashboard
+                     </Link>
+                  )}
+                  {!isAuthenticated() && (
+                     <Fragment>
+                        <Link
+                           className="nav-link"
+                           style={currentMenu(history, "/signup")}
+                           to="/signup"
+                        >
+                           Sign Up
+                        </Link>
+
+                        <Link
+                           className="nav-link"
+                           style={currentMenu(history, "/signin")}
+                           to="/signin"
+                        >
+                           Sign In
+                        </Link>
+                     </Fragment>
+                  )}
+                  {isAuthenticated() && (
+                     <span
+                        style={{ color: "#f1f1f1" }}
+                        onClick={() => {
+                           signout(() => {
+                              history.push("/");
+                           });
+                        }}
+                     >
+                        Sign Out
+                     </span>
+                  )}
+               </div>
             </li>
-         )}
-         <li>
-            <Link style={currentMenu(history, "/cart")} to="/cart">
-               <i class="fas fa-shopping-bag"></i>
-            </Link>
-         </li>
-         {!isAuthenticated() && (
-            <Fragment>
-               <li>
-                  <Link style={currentMenu(history, "/signup")} to="/signup">
-                     SignUp
-                  </Link>
-               </li>
-               <li>
-                  <Link style={currentMenu(history, "/signin")} to="/signin">
-                     SignIn
-                  </Link>
-               </li>
-            </Fragment>
-         )}
-         {isAuthenticated() && (
-            <li>
-               <span
-                  style={{ color: "red" }}
-                  onClick={() => {
-                     signout(() => {
-                        history.push("/");
-                     });
-                  }}
-               >
-                  Sign Out
-               </span>
-            </li>
-         )}
-      </ul>
+         </ul>
+      </div>
    </nav>
 );
 

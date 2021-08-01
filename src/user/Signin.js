@@ -30,7 +30,7 @@ const Signin = () => {
             }
          })
          .catch((error) => {
-            console.log("SignIN Failed", error);
+            console.log("SignIn Failed", error);
          });
    };
 
