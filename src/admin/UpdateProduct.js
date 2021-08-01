@@ -7,7 +7,7 @@ import {
    getProduct,
 } from "./helper/adminapicall";
 import Base from "../core/Base";
-import "../form-style.css";
+import "../core/css/form-style.css";
 
 const UpdateProduct = ({ match }) => {
    const { user, token } = isAuthenticated();

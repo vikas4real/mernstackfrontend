@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { isAuthenticated } from "../auth/helper/index";
 import { getAllCategories, addProduct } from "./helper/adminapicall";
 import Base from "../core/Base";
-import "../form-style.css";
+import "../core/css/form-style.css";
 
 const AddProduct = () => {
    const { user, token } = isAuthenticated();

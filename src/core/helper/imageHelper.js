@@ -1,6 +1,6 @@
 import React from "react";
 import { API } from "../../backend";
-import "../../styles.css";
+import "../../style.css";
 const ImageHelper = ({ product }) => {
    const imageURL = product
       ? `${API}/product/image/${product._id}`

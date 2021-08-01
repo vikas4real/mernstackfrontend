@@ -2,7 +2,7 @@
 * {
    margin: 0;
    padding: 0;
-   box-sizing: border-box;
+   outline: 0;
 }
 body {
    font-family: "Roboto";
@@ -45,6 +45,7 @@ nav ul li {
    align-items: center;
 }
 .welcome h1 {
+   text-align: center;
    padding-top: 10px;
    color: #000;
    font-weight: 500;
@@ -77,72 +78,6 @@ nav ul li {
       padding: auto;
       text-align: center;
    }
-}
-/* <-----------Product Card Style ----------> */
-
-.card {
-   width: 100%;
-   border: none;
-   height: 280px;
-   max-width: 380px;
-   overflow: hidden;
-   position: relative;
-   display: flex;
-   cursor: pointer;
-   justify-content: center;
-   transition: all ease 0.4s;
-   margin: 0 auto;
-   border-radius: 25px;
-   background: #f1f1f1;
-}
-
-.card img {
-   transition: all ease 0.4s;
-}
-
-.card:hover img {
-   margin-top: -80px;
-}
-
-.card .content {
-   width: 100%;
-   background: #fff;
-   position: absolute;
-   bottom: -60%;
-   margin-left: -8px;
-   transition: all ease 0.5s;
-   border-radius: 4px;
-   box-shadow: 0px -3px 4px rgba(10, 10, 10, 0.09);
-}
-
-.card .content .category {
-   font-size: 17px;
-   font-weight: 600;
-}
-
-.card .content .price {
-   font-size: 17px;
-   font-weight: 500;
-   color: #0d6efd;
-}
-
-.card .content p {
-   font-weight: 500;
-   font-size: 12px;
-}
-
-.card:hover .content {
-   bottom: 0%;
-}
-
-.buttons button {
-   border-radius: 1px;
-   margin-bottom: 10px;
-   transition: all ease 0.3s;
-}
-
-.content {
-   padding: 10px;
 }
 
 /*<------- footer --------->*/

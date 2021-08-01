@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles.css";
+import "../style.css";
 import Base from "./Base";
 import BraintreeCheckout from "../paymentGateways/braintreeCheckout";
 import Card from "./Card";

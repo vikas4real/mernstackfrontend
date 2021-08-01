@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import Base from "../core/Base";
-import "../form-style.css";
+import "../core/css/form-style.css";
 import { signin, authenticate, isAuthenticated } from "../auth/helper";
 
 const Signin = () => {
@@ -70,37 +70,70 @@ const Signin = () => {
 
    const SigninForm = () => {
       return (
-         <div>
-            <form className="box">
-               <h1>Sign In</h1>
-               <input
-                  onChange={(event) => {
-                     setValues({
-                        ...values,
-                        email: event.target.value,
-                     });
-                  }}
-                  required
-                  value={email}
-                  type="text"
-                  placeholder="E-Mail"
-               />
-               <input
-                  onChange={(event) => {
-                     setValues({
-                        ...values,
-                        password: event.target.value,
-                     });
-                  }}
-                  required
-                  value={password}
-                  type="password"
-                  placeholder="Password"
-               />
-               <button onClick={(event) => onSubmit(event)} type="submit">
-                  SignIn
-               </button>
-            </form>
+         <div className="container mt-5 mb-5">
+            <div className="row d-flex align-items-center justify-content-center">
+               <div className="col-md-6">
+                  <div className="card px-5 py-5">
+                     <h5 className="mt-3 text-center">Sign In</h5>
+                     <div className="form-input">
+                        <i className="fa fa-envelope"></i>
+                        <input
+                           className="form-control"
+                           onChange={(event) => {
+                              setValues({
+                                 ...values,
+                                 email: event.target.value,
+                              });
+                           }}
+                           required
+                           value={email}
+                           type="text"
+                           placeholder="E-Mail"
+                        />
+                     </div>
+                     <div className="form-input">
+                        <i className="fa fa-lock"></i>
+                        <input
+                           className="form-control"
+                           onChange={(event) => {
+                              setValues({
+                                 ...values,
+                                 password: event.target.value,
+                              });
+                           }}
+                           required
+                           value={password}
+                           type="password"
+                           placeholder="Password"
+                        />
+                     </div>
+                     <button
+                        className="btn btn-primary mt-4 signup"
+                        onClick={(event) => onSubmit(event)}
+                        type="submit"
+                     >
+                        SignIn
+                     </button>
+                     <div class="text-center mt-3">
+                        <span>Or continue with these social profile</span>
+                     </div>
+                     <div class="d-flex justify-content-center mt-4">
+                        <span class="social">
+                           <i className="fab fa-google"></i>
+                        </span>
+                        <span class="social">
+                           <i class="fab fa-facebook"></i>
+                        </span>
+                     </div>
+                     <div className="text-center mt-4">
+                        <span>New user? </span>
+                        <Link className="text-decoration-none" to="./signup">
+                           Sign Up
+                        </Link>
+                     </div>
+                  </div>
+               </div>
+            </div>
          </div>
       );
    };

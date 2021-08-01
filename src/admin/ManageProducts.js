@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { isAuthenticated } from "../auth/helper";
 import Base from "../core/Base";
 import { getAllProducts, deleteProduct } from "./helper/adminapicall";
-import "../form-style.css";
 const ManageProducts = () => {
    const [products, setProducts] = useState([]);
    const { user, token } = isAuthenticated();

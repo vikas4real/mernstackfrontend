@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles.css";
+import "../style.css";
 import Base from "./Base";
 import Card from "./Card";
 import Footer from "./Footer";
@@ -58,8 +58,9 @@ const Home = () => {
             <h3>Blast past fast.</h3>
             <h4>Starts from ₹69900. </h4>
          </section>
-         <div className="row left">
-            <h1>iPhone</h1>
+
+         <div className="row">
+            <h1 className="text-center mt-3">iPhone</h1>
             {iphone.map((product, index) => {
                return (
                   <div
@@ -72,7 +73,7 @@ const Home = () => {
             })}
          </div>
          <div className="row">
-            <h1>Macbook & iMac</h1>
+            <h1 className="text-center mt-3">Macbook & iMac</h1>
             {mac.map((product, index) => {
                return (
                   <div
@@ -85,7 +86,7 @@ const Home = () => {
             })}
          </div>
          <div className="row">
-            <h1>iPad</h1>
+            <h1 className="text-center mt-3">iPad</h1>
             {ipad.map((product, index) => {
                return (
                   <div

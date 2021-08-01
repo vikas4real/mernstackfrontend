@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { isAuthenticated } from "../auth/helper";
 import Base from "../core/Base";
 import { getAllCategories, deleteCategory } from "./helper/adminapicall";
-import "../form-style.css";
 const ManageCategories = () => {
    const [categories, setCategories] = useState([]);
    const { user, token } = isAuthenticated();

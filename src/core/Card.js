@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router";
 import { addProducToCart, removeItemFromCart } from "./helper/cartHelper";
 import ImageHelper from "./helper/imageHelper";
-import "../styles.css";
+import "../core/css/card-style.css";
 
 const Card = ({
    product,
@@ -57,7 +57,7 @@ const Card = ({
    };
 
    return (
-      <div className="card p-2">
+      <div className="product-card p-2">
          <div className="text-center">
             {getARedirect(redirect)}
             <ImageHelper product={product} />
