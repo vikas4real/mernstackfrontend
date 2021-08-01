@@ -91,13 +91,15 @@ const Menu = ({ history }) => (
                   Accessories
                </Link>
             </li>
-            <Link
-               className="nav-link"
-               style={currentMenu(history, "/cart")}
-               to="/cart"
-            >
-               <i className="fal fa-shopping-bag"></i>
-            </Link>
+            <li className="nav-item">
+               <Link
+                  className="nav-link"
+                  style={currentMenu(history, "/cart")}
+                  to="/cart"
+               >
+                  <i className="fal fa-shopping-bag"></i>
+               </Link>
+            </li>
             <li className="nav-item dropdown">
                <Link
                   style={currentMenu(history, "#")}
