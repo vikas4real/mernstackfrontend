@@ -18,8 +18,6 @@ const Cart = () => {
    const loadAllProducts = (products) => {
       return (
          <div>
-            {" "}
-            <h2>Products</h2>
             {products.map((product, index) => {
                return (
                   <div>
@@ -51,7 +49,7 @@ const Cart = () => {
       <div>
          <Base />
          <div className="row">
-            <h1>Cart</h1>
+            <h1 style={{ textAlign: "center", marginBottom: "5px" }}>Cart</h1>
             <div className="col-6">
                {products.length > 0 ? (
                   loadAllProducts(products)
