@@ -3,8 +3,8 @@
 .product-card {
    width: 100%;
    border: none;
-   height: 280px;
-   max-width: 380px;
+   height: 260px;
+   max-width: 350px;
    overflow: hidden;
    position: relative;
    display: flex;
