@@ -46,7 +46,9 @@ const Orders = () => {
                               <div class="col-5 pull-right">
                                  <span id="heading">Order No.</span>
                                  <br />
-                                 <span id="details">{order._id}</span>
+                                 <span id="details">
+                                    {order._id.slice(0, 8)}
+                                 </span>
                               </div>
                            </div>
                         </div>
@@ -73,7 +75,7 @@ const Orders = () => {
                               <div class="col-6">
                                  <span>Total Price :</span>
                               </div>
-                              <div class="col-4">
+                              <div class="col-6">
                                  <big>₹ {order.total_amount}</big>
                               </div>
                            </div>
