@@ -71,10 +71,7 @@ const Orders = () => {
                         <div class="total">
                            <div class="row">
                               <div class="col-9">
-                                 <span>Txn ID: </span>
-                                 <span style={{ fontWeight: "normal" }}>
-                                    {order.txn_id}
-                                 </span>
+                                 <span>Total Price :</span>
                               </div>
                               <div class="col-3">
                                  <big>₹ {order.total_amount}</big>
@@ -90,3 +87,5 @@ const Orders = () => {
    );
 };
 export default Orders;
+
+// <span style={{ fontWeight: "normal" }}>{order.txn_id}</span>;
