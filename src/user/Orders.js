@@ -70,10 +70,10 @@ const Orders = () => {
                         </div>
                         <div class="total">
                            <div class="row">
-                              <div class="col-9">
+                              <div class="col-6">
                                  <span>Total Price :</span>
                               </div>
-                              <div class="col-3">
+                              <div class="col-4">
                                  <big>₹ {order.total_amount}</big>
                               </div>
                            </div>
