@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router";
-import { addProducToCart, removeItemFromCart } from "./helper/cartHelper";
-import ImageHelper from "./helper/imageHelper";
-import "../core/css/card-style.css";
+import { addProducToCart, removeItemFromCart } from "../helper/cartHelper";
+import ImageHelper from "../helper/imageHelper";
+import "../../core/css/card-style.css";
 
 const Card = ({
    product,
@@ -83,26 +83,3 @@ const Card = ({
    );
 };
 export default Card;
-/*
-<------- Old Card Style ------->
-
-<div className="card text-white bg-dark border border-info ">
-         <div className="card-header lead">{cardTitle}</div>
-         <div className="card-body">
-            {getARedirect(redirect)}
-            <ImageHelper product={product} />
-            <p className="lead bg-success font-weight-normal text-wrap">
-               {cardDescription}
-            </p>
-            <p className="btn btn-success rounded  btn-sm px-4">
-               Price : ₹ {cardPrice}
-            </p>
-            <div className="row">
-               <div className="col-12">{showAddToCart(addtoCart)}</div>
-               <div className="col-12">
-                  {showRemoveFromCart(removeFromCart)}
-               </div>
-            </div>
-         </div>
-      </div>
-*/

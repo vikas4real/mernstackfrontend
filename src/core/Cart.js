@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../style.css";
+import "../core/css/cart-style.css";
 import Base from "./Base";
 import BraintreeCheckout from "../paymentGateways/braintreeCheckout";
-import Card from "./Card";
 import { loadCart } from "./helper/cartHelper";
 import StripeCheckout from "../paymentGateways/stripeCheckout";
+import ProductCart from "./Components/Product-cart";
 
 const Cart = () => {
    const [products, setProducts] = useState([]);
@@ -17,30 +19,31 @@ const Cart = () => {
    // <-------- Load Products in the Cart ---------->
    const loadAllProducts = (products) => {
       return (
-         <div>
-            {products.map((product, index) => {
-               return (
-                  <div>
-                     <Card
-                        key={index}
-                        product={product}
-                        addtoCart={false}
-                        removeFromCart={true}
-                        setReload={setReload}
-                        reload={reload}
-                     />
-                  </div>
-               );
-            })}
-         </div>
-      );
-   };
-
-   // <--------- Checkout Side Data Load ------->
-   const loadCheckout = () => {
-      return (
-         <div>
-            <h2>Checkout</h2>
+         <div class="shopping-cart dark">
+            <div className="container">
+               {products.map((product, index) => {
+                  return (
+                     <div class="row">
+                        <div class="col-md-12 col-lg-8">
+                           <div class="items">
+                              <div class="row">
+                                 <div class="product">
+                                    <ProductCart
+                                       key={index}
+                                       product={product}
+                                       addtoCart={false}
+                                       removeFromCart={true}
+                                       setReload={setReload}
+                                       reload={reload}
+                                    />
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  );
+               })}
+            </div>
          </div>
       );
    };
@@ -48,20 +51,77 @@ const Cart = () => {
    return (
       <div>
          <Base />
-         <div className="row">
-            <h1 style={{ textAlign: "center", marginBottom: "5px" }}>Cart</h1>
-            <div className="col-6">
+         <div className="row mt-5">
+            <div className="col-12">
                {products.length > 0 ? (
                   loadAllProducts(products)
                ) : (
-                  <h3>Your cart is empty</h3>
+                  <div class="container-fluid">
+                     <div class="row">
+                        <div class="container mt-5 mb-5 col-lg-12 col-md-6 col-sm-12 text-center">
+                           <div class="empty-cart">
+                              <div class="card-body cart">
+                                 <div class="col-sm-12 empty-cart-cls text-center">
+                                    <i
+                                       style={{ fontSize: "100px" }}
+                                       class="fas fa-shopping-cart mb-4"
+                                    ></i>
+                                    <h3>
+                                       <strong>Your cart is Empty</strong>
+                                    </h3>
+                                    <h4>Add something to make me happy !!</h4>
+                                    <Link
+                                       style={{ textDecoration: "none" }}
+                                       className="btn btn-success"
+                                       to="/"
+                                    >
+                                       Continue Shopping
+                                    </Link>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
                )}
             </div>
-            <div className="col-6">
-               <StripeCheckout products={products} setReload={setReload} />
+            <div className="container mt-5 mb-5 col-lg-12 col-md-6 col-sm-12 text-center">
+               {products.length > 0 ? (
+                  <StripeCheckout products={products} setReload={setReload} />
+               ) : (
+                  <p></p>
+               )}
             </div>
          </div>
       </div>
    );
 };
 export default Cart;
+
+// <div class="col-md-12 col-lg-4">
+//                      <div class="summary">
+//                         <h3>Summary</h3>
+//                         <div class="summary-item">
+//                            <span class="text">Sub Total</span>
+//                            <span class="price">₹ 360</span>
+//                         </div>
+//                         <div class="summary-item">
+//                            <span class="text">Discount</span>
+//                            <span class="price">₹ 0</span>
+//                         </div>
+//                         <div class="summary-item">
+//                            <span class="text">Shipping</span>
+//                            <span class="price">₹ 0</span>
+//                         </div>
+//                         <div class="summary-item">
+//                            <span class="text">Total</span>
+//                            <span class="price">₹ 360</span>
+//                         </div>
+//                         <button
+//                            type="button"
+//                            class="btn btn-dark btn-lg btn-block"
+//                         >
+//                            Checkout
+//                         </button>
+//                      </div>
+//                   </div>

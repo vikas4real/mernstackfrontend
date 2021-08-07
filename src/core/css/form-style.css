@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
-
 body {
    background-color: #ffffff;
-   font-family: "Roboto";
+
    font-weight: 300;
 }
 
@@ -36,6 +34,7 @@ body {
    background-color: #1c1e21;
    text-indent: 24px;
    font-size: 15px;
+   color: #fff;
 }
 
 .form-control:focus {

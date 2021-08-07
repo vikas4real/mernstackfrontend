@@ -3,6 +3,8 @@ import { Link, Redirect } from "react-router-dom";
 import Base from "../core/Base";
 import "../core/css/form-style.css";
 import { signin, authenticate, isAuthenticated } from "../auth/helper";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signin = () => {
    const [values, setValues] = useState({
@@ -140,10 +142,10 @@ const Signin = () => {
    return (
       <div>
          <Base />
+         {errorMsg()}
          {SigninForm()}
          {performRedirect()}
          {loadingMsg()}
-         {errorMsg()}
       </div>
    );
 };

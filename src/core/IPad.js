@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../style.css";
 import Base from "./Base";
-import Card from "./Card";
-import Footer from "./Footer";
+import Card from "./Components/Card";
+import Footer from "./Components/Footer";
 import { getProductsIpad } from "./helper/coreapicalls";
 const IPad = () => {
    const [products, setProducts] = useState([]);

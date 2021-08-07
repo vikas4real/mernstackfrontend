@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { signout, isAuthenticated } from "../auth/helper";
-import "../style.css";
+import { signout, isAuthenticated } from "../../auth/helper";
+import "../../style.css";
 
 const currentMenu = (history, path) => {
    if (history.location.pathname === path) {

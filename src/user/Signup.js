@@ -159,9 +159,9 @@ const Signup = () => {
    return (
       <div>
          <Base />
-         {SignupForm()}
-         {successMsg()}
          {errorMsg()}
+         {successMsg()}
+         {SignupForm()}
       </div>
    );
 };
