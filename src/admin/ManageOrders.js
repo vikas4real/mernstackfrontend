@@ -66,7 +66,9 @@ const ManageOrders = () => {
                               </td>
                               <td>{order.txn_id}</td>
                               <td>₹ {order.total_amount}</td>
-                              <td>{moment(order.updatedAt).format("L")}</td>
+                              <td>
+                                 {moment(order.updatedAt).format("DD-MMM-YY")}
+                              </td>
                            </tr>
                         </tbody>
                      );

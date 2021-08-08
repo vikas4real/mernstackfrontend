@@ -40,7 +40,9 @@ const Orders = () => {
                                  <span id="heading">Date</span>
                                  <br />
                                  <span id="details">
-                                    {moment(order.updatedAt).format("L")}
+                                    {moment(order.updatedAt).format(
+                                       "DD-MMM-YYYY"
+                                    )}
                                  </span>
                               </div>
                               <div class="col-5 pull-right">
