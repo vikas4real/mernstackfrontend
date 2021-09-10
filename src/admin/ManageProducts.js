@@ -9,7 +9,6 @@ const ManageProducts = () => {
 
    const preload = () => {
       getAllProducts().then((data) => {
-         //console.log(data);
          if (data.error) {
             console.log(data.error);
          } else {
@@ -36,25 +35,22 @@ const ManageProducts = () => {
    return (
       <div>
          <Base></Base>
-         <h2 className="mb-4">All products:</h2>
+         <h2 className="mb-4 text-center">:: All products ::</h2>
          <Link className="btn btn-info" to={`/admin/dashboard`}>
-            <span className="">Admin Home</span>
+            <span className="">Go back to Admin Dashboard</span>
          </Link>
-         <div className="row">
-            <div className="col-12">
-               <h2 className="text-center  my-3">
-                  Total {products.length} products
-               </h2>
+         <div className="row text-center">
+            <div className="col-12 mt-5">
                {products.map((product, index) => {
                   return (
-                     <div key={index} className="row text-center mb-2 ">
-                        <div className="col-3">
-                           <img alt="10px 10px" />
+                     <div key={index} className="row text">
+                        <div className="col-1">
+                           <h3>{index + 1}-</h3>
                         </div>
-                        <div className="col-3">
+                        <div className="col-7">
                            <h3 className="text-left">{product.name}</h3>
                         </div>
-                        <div className="col-3">
+                        <div className="col-2">
                            <Link
                               className="btn btn-success"
                               to={`/admin/product/update/${product._id}`}
@@ -62,7 +58,7 @@ const ManageProducts = () => {
                               <span className="">Update</span>
                            </Link>
                         </div>
-                        <div className="col-3">
+                        <div className="col-2">
                            <button
                               onClick={() => {
                                  deleteThisProduct(product._id);

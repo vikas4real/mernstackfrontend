@@ -31,6 +31,7 @@ body {
 
 .form-control {
    height: 50px;
+   margin-bottom: 10px;
    background-color: #1c1e21;
    text-indent: 24px;
    font-size: 15px;
@@ -43,7 +44,22 @@ body {
    color: #fff;
    border-color: #4f63e7;
 }
+.select-control {
+   height: 50px;
+   width: 540px;
+   margin-bottom: 10px;
 
+   background-color: #1c1e21;
+   text-indent: 24px;
+   font-size: 15px;
+   color: #fff;
+}
+.select-control:focus {
+   background-color: #25272a;
+   box-shadow: none;
+   color: #fff;
+   border-color: #4f63e7;
+}
 .signup {
    height: 50px;
    font-size: 14px;
