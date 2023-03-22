@@ -6,7 +6,7 @@
 }
 body {
    font-family: "Roboto";
-   background-color: #fff !important;
+   background-color: #f1f1f1 !important;
    overflow-x: hidden;
 }
 .height-100 {
@@ -43,8 +43,8 @@ nav ul li {
 /* <------------ Banner -----------> */
 .welcome {
    width: 100%;
-   height: 650px;
-   background-image: url("./images/iphone12-banner.jpeg");
+   height: 700px;
+   background-image: url("./images/iphone14-banner.png");
    background-position: center;
    background-repeat: no-repeat;
    background-size: cover;
@@ -76,7 +76,7 @@ nav ul li {
    .welcome {
       width: 100%;
       height: 700px;
-      background-image: url("./images/iphone12-banner-mobile.jpeg");
+      background-image: url("./images/iphone14-banner-mobile.png");
       background-position: center;
       background-repeat: no-repeat;
       background-size: 100% 90%;
@@ -241,4 +241,35 @@ footer {
    .circle {
       display: none;
    }
+}
+
+.grid-full {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-gap: 10px;
+}
+.grid-product-full {
+   background: #f1f1f1;
+   grid-column: span 3;
+   display: flex;
+   position: relative;
+}
+.grid-detail-sum {
+   position: absolute;
+   top: 35%;
+   right: 12%;
+   text-align: center;
+}
+.grid-detail-sum h2 {
+   font-size: 3rem;
+   font-weight: 500;
+}
+.grid-detail-sum p {
+   margin: 20px 0;
+}
+.grid-detail-sum a {
+   color: #3498db;
+}
+.grid-detail-sum a:hover {
+   text-decoration: underline;
 }

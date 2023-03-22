@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { isAuthenticated } from "../auth/helper/index";
 import Base from "../core/Base";
-import "../core/css/form-style.css";
+import "../core/css/form-style.css"
 import { updateCategory, getCategoryById } from "./helper/adminapicall";
 
 const UpdateCategory = ({ match }) => {
@@ -74,22 +74,42 @@ const UpdateCategory = ({ match }) => {
    };
 
    const UpdateCategoryForm = () => (
-      <form className="box">
-         <h1>Update Category</h1>
-         <input
-            onChange={handleChange}
-            required
-            value={name}
-            type="text"
-            placeholder="Enter Category Name"
-         />
-         <button type="submit" onClick={(event) => onSubmit(event)}>
-            Update Category
-         </button>
-         <Link to="/admin/dashboard">
-            <button type="submit">Go Back</button>
-         </Link>
-      </form>
+      <div className="container mt-5 mb-5">
+         <div className="row d-flex align-items-center justify-content-center">
+            <div className="col-md-6">
+               <div className="card px-5 py-5">
+                  <h5 className="mt-3 text-center">Update Category</h5>
+                  <div className="form-input">
+                     <input
+                        className="form-control"
+                        onChange={handleChange}
+                        required
+                        value={name}
+                        type="text"
+                        placeholder="Enter New Category Name"
+                     />
+                  </div>
+
+                  <button
+                     className="btn btn-primary mt-4 signup"
+                     type="submit"
+                     onClick={(event) => onSubmit(event)}
+                  >
+                     Update Category
+                  </button>
+
+                  <Link
+                     className="btn btn-danger mt-4 signup"
+                     to="/admin/dashboard"
+                  >
+                     <button className="btn" type="submit">
+                        Go Back
+                     </button>
+                  </Link>
+               </div>
+            </div>
+         </div>
+      </div>
    );
 
    return (

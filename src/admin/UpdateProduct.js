@@ -127,67 +127,88 @@ const UpdateProduct = ({ match }) => {
    };
 
    const UpdateProductForm = () => (
-      <form className="box">
-         <h1>Add Product</h1>
-         <input
-            onChange={handleChange("name")}
-            required
-            name="product_image"
-            type="text"
-            placeholder="Enter Product Name"
-            value={name}
-         />
-         <textarea
-            onChange={handleChange("description")}
-            required
-            name="product_image"
-            value={description}
-            type="text-area"
-            placeholder="Enter Product Description"
-         />
-         <input
-            onChange={handleChange("price")}
-            required
-            value={price}
-            type="text"
-            placeholder="Enter Product Price"
-         />
+      <div className="container mt-5 mb-5">
+         <div className="row d-flex align-items-center justify-content-center">
+            <div className="col-md-6">
+               <div className="card px-5 py-5">
+                  <h5 className="mt-3 text-center">Update Product</h5>
+                  <div className="form-input">
+                     <input
+                        className="form-control"
+                        onChange={handleChange("name")}
+                        required
+                        name="product_image"
+                        type="text"
+                        placeholder="Enter Product Name"
+                        value={name}
+                     />
+                     <textarea
+                        className="form-control"
+                        onChange={handleChange("description")}
+                        required
+                        name="product_image"
+                        value={description}
+                        type="text-area"
+                        placeholder="Enter Product Description"
+                     />
+                     <input
+                        className="form-control"
+                        onChange={handleChange("price")}
+                        required
+                        value={price}
+                        type="text"
+                        placeholder="Enter Product Price"
+                     />
 
-         <select
-            onChange={handleChange("category")}
-            type="select"
-            placeholder="Category"
-         >
-            <option>Select Category</option>
-            {categories &&
-               categories.map((cat, index) => (
-                  <option key={index} value={cat._id}>
-                     {cat.name}
-                  </option>
-               ))}
-         </select>
-         <input
-            onChange={handleChange("stock")}
-            required
-            value={stock}
-            type="number"
-            placeholder="Stock"
-         />
-         <input
-            onChange={handleChange("product_image")}
-            className="text-white"
-            type="file"
-            name="product_image"
-            accept="image"
-            placeholder="Choose a file"
-         />
-         <button type="submit" onClick={onSubmit}>
-            Update Product
-         </button>
-         <Link to="/admin/dashboard">
-            <button type="submit">Go Back</button>
-         </Link>
-      </form>
+                     <select
+                        className="select-control"
+                        onChange={handleChange("category")}
+                        type="select"
+                     >
+                        <option>Select Category</option>
+                        {categories &&
+                           categories.map((cat, index) => (
+                              <option key={index} value={cat._id}>
+                                 {cat.name}
+                              </option>
+                           ))}
+                     </select>
+                     <input
+                        className="form-control"
+                        onChange={handleChange("stock")}
+                        required
+                        value={stock}
+                        type="number"
+                        placeholder="Stock"
+                     />
+                     <input
+                        onChange={handleChange("product_image")}
+                        className="text-white"
+                        type="file"
+                        name="product_image"
+                        accept="image"
+                        placeholder="Choose a file"
+                     />
+                  </div>
+                  <button
+                     className="btn btn-primary mt-4 signup"
+                     type="submit"
+                     onClick={onSubmit}
+                  >
+                     Update Product
+                  </button>
+                  <Link
+                     className="btn btn-danger mt-4 signup"
+                     to="/admin/dashboard"
+                  >
+                     <button className="btn" type="submit">
+                        Go Back
+                     </button>
+                  </Link>
+               </div>
+            </div>
+         </div>
+      </div>
    );
 
    return (

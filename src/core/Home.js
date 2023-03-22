@@ -54,50 +54,27 @@ const Home = () => {
       <div>
          <Base />
          <section className="welcome">
-            <h1>iPhone 12</h1>
-            <h3>Blast past fast.</h3>
-            <h4>Starts from ₹69900. </h4>
+            <h1>iPhone 14</h1>
+            <h3>Two great sizes.</h3>
+            <h3>Now with a splash of yellow.</h3>
+            <h4>
+               Starting from ₹69900 <a href="/iphone">Buy now</a>
+            </h4>
          </section>
 
-         <div className="row">
-            <h1 className="text-center mt-3">iPhone</h1>
-            {iphone.map((product, index) => {
-               return (
-                  <div
-                     key={index}
-                     className="container mt-5 mb-5 col-lg-3 col-md-4 col-sm-12"
-                  >
-                     <Card product={product} />
-                  </div>
-               );
-            })}
-         </div>
-         <div className="row">
-            <h1 className="text-center mt-3">Macbook & iMac</h1>
-            {mac.map((product, index) => {
-               return (
-                  <div
-                     key={index}
-                     className="container mt-5 mb-5 col-lg-3 col-md-4 col-sm-12"
-                  >
-                     <Card product={product} />
-                  </div>
-               );
-            })}
-         </div>
-         <div className="row">
-            <h1 className="text-center mt-3">iPad</h1>
-            {ipad.map((product, index) => {
-               return (
-                  <div
-                     key={index}
-                     className="container mt-5 mb-5 col-lg-3 col-md-4 col-sm-12"
-                  >
-                     <Card product={product} />
-                  </div>
-               );
-            })}
-         </div>
+         <section className="grid-full">
+            <div className="grid-product-full">
+               <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/smb-accessories-201908?wid=1070&hei=480&fmt=png-alpha&.v=1563990869846"></img>
+               <div className="grid-detail-sum">
+                  <h2>Accessories</h2>
+                  <p>Get things done in style.</p>
+                  <a href="/accessories">
+                     Shop now <i className="fas fa-chevron-right"></i>
+                  </a>
+               </div>
+            </div>
+         </section>
+
          <Footer />
       </div>
    );

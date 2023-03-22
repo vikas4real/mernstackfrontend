@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { isAuthenticated } from "../auth/helper";
 import Base from "../core/Base";
@@ -36,26 +38,30 @@ const AddCategory = () => {
 
    const successMsg = () => {
       if (success) {
-         return (
-            <div
-               className="alert alert-success"
-               style={{ display: success ? "" : "none" }}
-            >
-               Category Added Successfully
-            </div>
-         );
+         toast.success("Category added successfully", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+         });
       }
    };
    const errorMsg = () => {
       if (error) {
-         return (
-            <div
-               className="alert alert-danger"
-               style={{ display: error ? "" : "none" }}
-            >
-               Failed to Add Category
-            </div>
-         );
+         toast.error("Failed to add category", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+         });
       }
    };
 
@@ -104,6 +110,7 @@ const AddCategory = () => {
          {AddCategoryForm()}
          {successMsg()}
          {errorMsg()}
+         <ToastContainer />
       </div>
    );
 };

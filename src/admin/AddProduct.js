@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { isAuthenticated } from "../auth/helper/index";
 import { getAllCategories, addProduct } from "./helper/adminapicall";
@@ -83,28 +85,34 @@ const AddProduct = () => {
          }
       });
    };
-
    const successMsg = () => {
-      return (
-         <div
-            className="alert alert-success mt-3"
-            style={{ display: createdProduct ? "" : "none" }}
-         >
-            {createdProduct} Added Successfully
-         </div>
-      );
+      if (success) {
+         toast.success("Product added successfully", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+         });
+      }
    };
    const errorMsg = () => {
-      return (
-         <div
-            className="alert alert-danger"
-            style={{ display: error ? "" : "none" }}
-         >
-            Failed to Add Product
-         </div>
-      );
+      if (error) {
+         toast.error("Failed to add product", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+         });
+      }
    };
-
    const AddProductForm = () => (
       <div className="container mt-5 mb-5">
          <div className="row d-flex align-items-center justify-content-center">
@@ -161,7 +169,6 @@ const AddProduct = () => {
                         placeholder="Stock"
                      />
                      <input
-                        className="form-control"
                         onChange={handleChange("product_image")}
                         className="text-white"
                         type="file"
@@ -197,6 +204,7 @@ const AddProduct = () => {
          {successMsg()}
          {errorMsg()}
          {AddProductForm()}
+         <ToastContainer />
       </div>
    );
 };
