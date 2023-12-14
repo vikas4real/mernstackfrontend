@@ -154,7 +154,7 @@ export const deleteProduct = (productId, userId, token) => {
 //<------- get All Orders --------->
 
 export const getAllOrders = (userId, token) => {
-   return fetch(`${API}/order/all/${userId}`, {
+   return fetch(`${API}/${userId}/order/all`, {
       method: "GET",
       headers: {
          "Content-Type": "application/json",

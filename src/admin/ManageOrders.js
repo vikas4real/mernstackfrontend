@@ -40,34 +40,29 @@ const ManageOrders = () => {
                         <th scope="col">Date & Time</th>
                      </tr>
                   </thead>
-
                   {orders.map((order, index) => {
                      return (
                         <tbody>
-                           <tr>
-                              <th key={index} scope="row">
-                                 {order._id}
-                              </th>
-                              <td>{order.user.email}</td>
+                           <tr key={index}>
+                              <td>{order._id}</td>
+                              <td>{order.user?.email}</td>
                               <td>
-                                 {order.user.fname} {order.user.lname}
+                                 {order.user?.fname} {order.user?.lname}
                               </td>
                               <td>{order.status}</td>
                               <td>
-                                 {order.products.map((product, index) => {
-                                    return (
-                                       <span key={index}>
-                                          <span>{index + 1}. </span>
-                                          {product.name}
-                                          <p></p>
-                                       </span>
-                                    );
-                                 })}
+                                 {order.products.map((product, index) => (
+                                    <span key={index}>
+                                       {index + 1} - {product.name}
+                                    </span>
+                                 ))}
                               </td>
                               <td>{order.txn_id}</td>
-                              <td>₹ {order.total_amount}</td>
+                              <td>{order.total_amount}</td>
                               <td>
-                                 {moment(order.updatedAt).format("DD-MMM-YY")}
+                                 {moment(order.createdAt).format(
+                                    "DD-MMM-YYYY hh:mm"
+                                 )}
                               </td>
                            </tr>
                         </tbody>
