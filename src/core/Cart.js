@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "../style.css";
 import "../core/css/cart-style.css";
 import Base from "./Base";
-import BraintreeCheckout from "../paymentGateways/braintreeCheckout";
 import { loadCart } from "./helper/cartHelper";
 import StripeCheckout from "../paymentGateways/stripeCheckout";
 import ProductCart from "./Components/Product-cart";
@@ -97,31 +96,3 @@ const Cart = () => {
    );
 };
 export default Cart;
-
-// <div class="col-md-12 col-lg-4">
-//                      <div class="summary">
-//                         <h3>Summary</h3>
-//                         <div class="summary-item">
-//                            <span class="text">Sub Total</span>
-//                            <span class="price">₹ 360</span>
-//                         </div>
-//                         <div class="summary-item">
-//                            <span class="text">Discount</span>
-//                            <span class="price">₹ 0</span>
-//                         </div>
-//                         <div class="summary-item">
-//                            <span class="text">Shipping</span>
-//                            <span class="price">₹ 0</span>
-//                         </div>
-//                         <div class="summary-item">
-//                            <span class="text">Total</span>
-//                            <span class="price">₹ 360</span>
-//                         </div>
-//                         <button
-//                            type="button"
-//                            class="btn btn-dark btn-lg btn-block"
-//                         >
-//                            Checkout
-//                         </button>
-//                      </div>
-//                   </div>

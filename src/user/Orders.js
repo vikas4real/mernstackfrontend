@@ -91,5 +91,3 @@ const Orders = () => {
    );
 };
 export default Orders;
-
-// <span style={{ fontWeight: "normal" }}>{order.txn_id}</span>;
