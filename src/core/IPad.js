@@ -24,20 +24,42 @@ const IPad = () => {
    return (
       <div>
          <Base />
-         <div className="row text-center">
-            <h1>iPad</h1>
-            <div className="row">
-               {products.map((product, index) => {
-                  return (
-                     <div
-                        key={index}
-                        className="container mt-5 mb-5 col-lg-3 col-md-4 col-sm-12"
-                     >
-                        <Card product={product} />
-                     </div>
-                  );
-               })}
-            </div>
+         <div
+            className="breadcrumb-header"
+            style={{
+               height: "200px",
+               backgroundColor: "#fff",
+               display: "flex",
+               alignItems: "center",
+               justifyContent: "center",
+               textAlign: "center",
+               borderBottom: "1px solid #ddd",
+               padding: "0 20px",
+               marginBottom: "20px",
+            }}
+         >
+            <h1
+               style={{
+                  fontSize: "36px",
+                  fontWeight: "bold",
+                  color: "#333",
+                  margin: "0",
+               }}
+            >
+               iPad
+            </h1>
+         </div>
+         <div className="row text-left mb-4 mx-4">
+            {products.map((product, index) => {
+               return (
+                  <div
+                     key={index}
+                     className="col-lg-3 col-md-6 col-sm-12 mb-4" // 4 products on large screen, 2 on medium, 1 on small
+                  >
+                     <Card product={product} />
+                  </div>
+               );
+            })}
          </div>
          <Footer />
       </div>

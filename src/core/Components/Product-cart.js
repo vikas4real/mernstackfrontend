@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router";
 import { removeItemFromCart } from "../helper/cartHelper";
-import ImageHelper from "../helper/imageHelper";
 import "../css/cart-style.css";
+import { API } from "src/backend";
 const ProductCart = ({
    product,
    addtoCart = true,
@@ -18,7 +18,9 @@ const ProductCart = ({
       ? product.description
       : "Product Derscription";
    const ProductCartPrice = product ? product.price : "0";
-
+   const imageURL = product
+      ? `${API}/product/image/${product._id}`
+      : `https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png`;
    const getARedirect = (redirect) => {
       if (redirect) {
          return <Redirect to="/cart" />;
@@ -44,7 +46,13 @@ const ProductCart = ({
       <div class="row">
          <div class="col-md-4">
             {getARedirect(redirect)}
-            <ImageHelper product={product} />
+
+            <img
+               src={imageURL}
+               alt="photo"
+               className="img-fluid mx-auto d-block image"
+               width="200"
+            />
          </div>
          <div class="col-md-8">
             <div class="info">

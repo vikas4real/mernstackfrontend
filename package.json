@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.7.4",
     "braintree-web-drop-in-react": "^1.2.1",
     "cors": "^2.8.5",
+    "lucide-react": "^0.298.0",
     "moment": "^2.29.1",
     "query-string": "^6.14.1",
     "react": "^17.0.1",
@@ -41,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.6"
   }
 }
