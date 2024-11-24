@@ -156,7 +156,7 @@ const Menu = ({ history }) => (
                   )}
                   {isAuthenticated() && (
                      <span
-                        style={{ color: "#f1f1f1" }}
+                        style={{ color: "#f1f1f1", marginLeft: "10px" }}
                         onClick={() => {
                            signout(() => {
                               history.push("/");

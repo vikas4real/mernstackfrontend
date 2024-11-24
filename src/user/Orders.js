@@ -8,6 +8,7 @@ const Orders = () => {
    const [orders, setOrders] = useState([]);
    const userId = isAuthenticated() && isAuthenticated().user._id;
    const token = isAuthenticated() && isAuthenticated().token;
+
    const preload = () => {
       getAllUserOrders(userId, token).then((data) => {
          if (data.error) {
@@ -21,7 +22,7 @@ const Orders = () => {
 
    useEffect(() => {
       preload();
-   }, []);
+   });
 
    return (
       <div>

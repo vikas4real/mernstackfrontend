@@ -3,7 +3,6 @@ import { Link, Redirect } from "react-router-dom";
 import Base from "../core/Base";
 import "../core/css/form-style.css";
 import { signin, authenticate, isAuthenticated } from "../auth/helper";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Signin = () => {
@@ -114,7 +113,7 @@ const Signin = () => {
                         onClick={(event) => onSubmit(event)}
                         type="submit"
                      >
-                        SignIn
+                        Sign In
                      </button>
                      <div class="text-center mt-3">
                         <span>Or continue with these social profile</span>

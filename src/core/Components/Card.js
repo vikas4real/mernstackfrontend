@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { API } from "../../backend"; // Adjust the path based on your project structure
-import { addProducToCart, removeItemFromCart } from "../helper/cartHelper"; // Ensure these helpers exist and are correctly imported
+import { addProductToCart, removeItemFromCart } from "../helper/cartHelper"; // Ensure these helpers exist and are correctly imported
 
 const Card = ({
    product,
@@ -28,7 +28,7 @@ const Card = ({
    };
 
    const addToCart = () => {
-      addProducToCart(product, () => setRedirect(true));
+      addProductToCart(product, () => setRedirect(true));
    };
 
    const showAddToCart = (addtoCart) => {

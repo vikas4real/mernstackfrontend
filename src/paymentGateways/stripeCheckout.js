@@ -63,9 +63,6 @@ const StripeCheckout = ({
             console.log(err);
          });
    };
-   //<------Empty cart after successfull payment ---->
-
-   // <----------- Show Stripe Payment Button ---------->
 
    const showStripeButton = () => {
       return isAuthenticated() ? (
@@ -88,7 +85,8 @@ const StripeCheckout = ({
 
    return (
       <div>
-         <h2>Total Amount to be paid : ₹ {getFinalPrice()}</h2>
+         <h4>Total Amount to be paid</h4>
+         <h2>₹ {getFinalPrice()}</h2>
          {showStripeButton()}
       </div>
    );
