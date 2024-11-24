@@ -6,6 +6,7 @@
       "@testing-library/jest-dom": "^5.11.9",
       "@testing-library/react": "^11.2.5",
       "@testing-library/user-event": "^12.7.4",
+      "bootstrap": "^5.3.3",
       "cors": "^2.8.5",
       "lucide-react": "^0.298.0",
       "moment": "^2.29.1",

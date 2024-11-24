@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { isAuthenticated } from "../auth/helper";
-import { emptyCart, loadCart } from "../core/helper/cartHelper";
+import { emptyCart } from "../core/helper/cartHelper";
 import StripeCheckoutButton from "react-stripe-checkout";
 import { API } from "../backend";
 
-const StripeCheckout = ({
-   products,
-   setReload = (f) => f,
-   reload = undefined,
-}) => {
+const StripeCheckout = ({ products, finalPrice }) => {
    const [data, setData] = useState({
       loading: false,
       success: false,
@@ -17,23 +13,8 @@ const StripeCheckout = ({
       address: "",
    });
 
-   const token = isAuthenticated() && isAuthenticated().token;
-   const userId = isAuthenticated() && isAuthenticated().user._id;
-
-   // <--------- Get Total Price of Products ------------->
-
-   const getFinalPrice = () => {
-      let finalprice = 0;
-      products.map((p) => {
-         finalprice = finalprice + p.price;
-      });
-      return finalprice;
-   };
-
-   // <----------- Make Payment Function -------------->
    const makePayment = (token) => {
       let tokenData = localStorage.getItem("jwt");
-      console.log("TOKEN DATA:", tokenData);
       if (!tokenData) {
          return;
       }
@@ -52,10 +33,7 @@ const StripeCheckout = ({
          body: JSON.stringify(body),
       })
          .then((response) => {
-            console.log(response);
-            //call for further functions
             const status = response.status;
-            console.log("STATUS: ", status);
             emptyCart();
             window.location.reload();
          })
@@ -69,7 +47,7 @@ const StripeCheckout = ({
          <StripeCheckoutButton
             stripeKey={process.env.REACT_APP_PAYMENT_PUBLISHABLE_KEY}
             token={makePayment}
-            amount={getFinalPrice() * 100}
+            amount={finalPrice * 100}
             name="Apple Store"
             shippingAddress
             billingAddress
@@ -78,15 +56,15 @@ const StripeCheckout = ({
          </StripeCheckoutButton>
       ) : (
          <Link to="/signin">
-            <button className="btn btn-danger">SignIn to Make Order</button>
+            <button className="btn btn-danger">Sign In to Make Order</button>
          </Link>
       );
    };
 
    return (
       <div>
-         <h4>Total Amount to be paid</h4>
-         <h2>₹ {getFinalPrice()}</h2>
+         <h4>Total amount to be paid</h4>
+         <h2>₹ {finalPrice}</h2>
          {showStripeButton()}
       </div>
    );

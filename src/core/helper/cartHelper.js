@@ -1,44 +1,38 @@
 export const addProductToCart = (product, next) => {
    let cart = [];
-   let totalPrice = 0; // Initialize the total price variable
+   let totalPrice = 0;
    if (typeof window !== undefined) {
-      // Get the cart from localStorage
       if (localStorage.getItem("cart")) {
          cart = JSON.parse(localStorage.getItem("cart"));
       }
 
-      // Check if the product already exists in the cart
       const productIndex = cart.findIndex((item) => item._id === product._id);
 
       if (productIndex === -1) {
-         // If the product is not in the cart, add it with the updated price
          cart.push({
             ...product,
             count: 1,
-            totalPrice: product.price, // Initial total price (price * 1)
+            totalPrice: product.price, // Initialize price based on quantity
          });
       } else {
-         // If the product is already in the cart, increase its quantity and update the total price
          cart[productIndex].count += 1;
          cart[productIndex].totalPrice =
-            cart[productIndex].count * product.price;
+            cart[productIndex].count * product.price; // Recalculate totalPrice
       }
 
-      // Calculate the total price of all items in the cart
       cart.forEach((item) => {
          totalPrice += item.totalPrice;
       });
 
-      // Save the updated cart and total price back to localStorage
       localStorage.setItem("cart", JSON.stringify(cart));
-      localStorage.setItem("totalPrice", totalPrice); // Save total price in localStorage
-      next();
+      localStorage.setItem("totalPrice", totalPrice);
+      next(); // Update the cart in parent component
    }
 };
 
-export const removeItemFromCart = (productId) => {
+export const removeItemFromCart = (productId, next) => {
    let cart = [];
-   let totalPrice = 0; // Initialize the total price variable
+   let totalPrice = 0;
    if (typeof window !== undefined) {
       if (localStorage.getItem("cart")) {
          cart = JSON.parse(localStorage.getItem("cart"));
@@ -47,9 +41,8 @@ export const removeItemFromCart = (productId) => {
       const productIndex = cart.findIndex((item) => item._id === productId);
 
       if (productIndex !== -1) {
-         // If the product exists in the cart, decrease quantity or remove it
+         // If the quantity is greater than 1, decrease it
          if (cart[productIndex].count > 1) {
-            // Decrease quantity and update the total price
             cart[productIndex].count -= 1;
             cart[productIndex].totalPrice =
                cart[productIndex].count * cart[productIndex].price;
@@ -59,17 +52,26 @@ export const removeItemFromCart = (productId) => {
          }
       }
 
-      // Calculate the total price of all items in the cart
+      // Recalculate total price
       cart.forEach((item) => {
          totalPrice += item.totalPrice;
       });
 
-      // Save the updated cart and total price back to localStorage
+      // If the cart is empty, set totalPrice to 0
+      if (cart.length === 0) {
+         totalPrice = 0;
+      }
+
+      // Save the updated cart and total price to localStorage
       localStorage.setItem("cart", JSON.stringify(cart));
-      localStorage.setItem("totalPrice", totalPrice); // Save total price in localStorage
+      localStorage.setItem("totalPrice", totalPrice);
+
+      // Trigger the callback to update the UI
+      next();
    }
    return cart;
 };
+
 export const loadCart = () => {
    if (typeof window !== undefined) {
       if (localStorage.getItem("cart")) {

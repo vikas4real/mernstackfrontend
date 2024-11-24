@@ -3,19 +3,24 @@ import { Link } from "react-router-dom";
 import "../style.css";
 import "../core/css/cart-style.css";
 import Base from "./Base";
-import { loadCart } from "./helper/cartHelper";
+import { loadCart, getFinalPrice } from "./helper/cartHelper"; // Import getFinalPrice
 import StripeCheckout from "../paymentGateways/stripeCheckout";
 import ProductCart from "./Components/Product-cart";
 
 const Cart = () => {
    const [products, setProducts] = useState([]);
    const [reload, setReload] = useState(false);
-   console.log(products);
+   const [finalPrice, setFinalPrice] = useState(0);
 
    useEffect(() => {
       let data = loadCart();
-      if (data != undefined) setProducts(data);
+      if (data != undefined) {
+         setProducts(data);
+      }
+      const total = getFinalPrice();
+      setFinalPrice(total);
    }, [reload]);
+
    const loadAllProducts = (products) => {
       return (
          <div className="shopping-cart dark">
@@ -27,7 +32,10 @@ const Cart = () => {
                            <div className="items">
                               <div className="row">
                                  <div className="product">
-                                    <ProductCart product={product} />
+                                    <ProductCart
+                                       product={product}
+                                       setReload={setReload}
+                                    />
                                  </div>
                               </div>
                            </div>
@@ -47,14 +55,13 @@ const Cart = () => {
             {products.length > 0 ? (
                <>
                   <div className="col-lg-9 col-md-8 col-sm-12">
-                     {/* Product List - 80% Width */}
                      {loadAllProducts(products)}
                   </div>
                   <div className="col-lg-3 col-md-4 col-sm-12 text-center">
-                     {/* Stripe Button - 20% Width */}
                      <StripeCheckout
                         products={products}
                         setReload={setReload}
+                        finalPrice={finalPrice}
                      />
                   </div>
                </>
@@ -91,4 +98,5 @@ const Cart = () => {
       </div>
    );
 };
+
 export default Cart;

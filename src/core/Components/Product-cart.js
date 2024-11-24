@@ -3,29 +3,35 @@ import { Redirect } from "react-router";
 import { addProductToCart, removeItemFromCart } from "../helper/cartHelper";
 import "../css/cart-style.css";
 import { API } from "src/backend";
-const ProductCart = ({ product }) => {
+
+const ProductCart = ({ product, setReload }) => {
    const [redirect, setRedirect] = useState(false);
 
+   // Dynamically update the price based on quantity
    const ProductCartTitle = product ? product.name : "Product Name";
-   const ProductCartPrice = product ? product.price * product.count : "0";
    const imageURL = product
       ? `${API}/product/image/${product._id}`
       : `https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png`;
+
+   const getARedirect = (redirect) => {
+      if (redirect) {
+         setRedirect(!redirect);
+         return <Redirect to="/cart" />;
+      }
+   };
+
    const handleDecrease = () => {
-      if (product.count > 1) {
-         removeItemFromCart();
-         getARedirect();
+      if (product.count >= 1) {
+         removeItemFromCart(product._id, () => {
+            setReload((prev) => !prev);
+         });
       }
    };
 
    const handleIncrease = () => {
-      addProductToCart();
-      getARedirect();
-   };
-   const getARedirect = (redirect) => {
-      if (redirect) {
-         return <Redirect to="/cart" />;
-      }
+      addProductToCart(product, () => {
+         setReload((prev) => !prev);
+      });
    };
 
    return (
@@ -44,7 +50,7 @@ const ProductCart = ({ product }) => {
       >
          {getARedirect(redirect)}
          <img
-            src={imageURL} // Replace with actual image URL
+            src={imageURL}
             alt="Product"
             style={{
                width: "100px",
@@ -75,7 +81,7 @@ const ProductCart = ({ product }) => {
             }}
          >
             <button
-               onClick={() => handleDecrease()}
+               onClick={handleDecrease}
                style={{
                   backgroundColor: "#ddd",
                   border: "none",
@@ -99,7 +105,7 @@ const ProductCart = ({ product }) => {
                {product.count}
             </p>
             <button
-               onClick={() => handleIncrease()}
+               onClick={handleIncrease}
                style={{
                   backgroundColor: "#ddd",
                   border: "none",
@@ -112,18 +118,6 @@ const ProductCart = ({ product }) => {
             >
                +
             </button>
-         </div>
-         <div style={{ flex: 1 }}>
-            <h3
-               style={{
-                  fontSize: "18px",
-                  fontWeight: "bold",
-                  margin: "0",
-                  color: "#333",
-               }}
-            >
-               {ProductCartPrice}
-            </h3>
          </div>
       </div>
    );
